@@ -7,7 +7,7 @@ const App = () => {
 
   const toggleDarkMode = () => {
     setIsDarkMode((prev) => !prev);
-    setThemeMode(!isDarkMode); // Update the theme mode in the index.html file
+    setThemeMode(!isDarkMode); 
   };
 
   const setThemeMode = (isDarkMode) => {

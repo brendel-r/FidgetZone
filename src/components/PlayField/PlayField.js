@@ -32,9 +32,22 @@ const PlayField = ({ toggleDarkMode, isDarkMode }) => {
     return color;
   };
 
+  const handleShakeButtonClick = () => {
+
+    const playFieldElement = document.getElementById("playField");
+    playFieldElement.classList.add("shake");
+
+
+    setTimeout(() => {
+      playFieldElement.classList.remove("shake");
+    }, 500); 
+  };
+
   return (
-    <div className={`PlayField ${isDarkMode ? "dark-mode" : "light-mode"}`}>
-      
+    <div
+      id="playField" 
+      className={`PlayField ${isDarkMode ? "dark-mode" : "light-mode"}`}
+    >
       <div className="light-dark-container">
         <button className="light-dark-btn" onClick={toggleDarkMode}>
           {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
@@ -47,12 +60,12 @@ const PlayField = ({ toggleDarkMode, isDarkMode }) => {
             key={index}
             className="color-button"
             style={{ backgroundColor: color }}
-            onMouseEnter={() => handleRandomColor(index)}>
-          </div>
+            onMouseEnter={() => handleRandomColor(index)}
+          ></div>
         ))}
       </div>
 
-        <div className="letter-image">
+      <div className="letter-image">
         <div className="animated-mail">
           <div className="back-fold"></div>
           <div className="letter">
@@ -84,52 +97,11 @@ const PlayField = ({ toggleDarkMode, isDarkMode }) => {
         </div>
       </div>
 
-      <div class="flower">
-        <div class="f-wrapper">
-            <div class="flower__line"></div>
-            <div class="f">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8 flower__fall-down--yellow"></div>
-            </div>
-        </div>
-
-        <div class="f-wrapper f-wrapper--2">
-            <div class="flower__line"></div>
-            <div class="f">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8 flower__fall-down--pink"></div>
-            </div>
-        </div>
-
-        <div class="f-wrapper f-wrapper--3">
-            <div class="flower__line"></div>
-            <div class="f">
-                <div class="flower__leaf flower__leaf--1"></div>
-                <div class="flower__leaf flower__leaf--2"></div>
-                <div class="flower__leaf flower__leaf--3"></div>
-                <div class="flower__leaf flower__leaf--4"></div>
-                <div class="flower__leaf flower__leaf--5"></div>
-                <div class="flower__leaf flower__leaf--6"></div>
-                <div class="flower__leaf flower__leaf--7"></div>
-                <div class="flower__leaf flower__leaf--8 flower__fall-down--purple"></div>
-            </div>
-        </div>
-        <div class="flower__glass"></div>
-    </div>
-
-
+      <div>
+        <button className="shake-button" onDoubleClick={handleShakeButtonClick}>
+         Double Click to Shake
+        </button>
+      </div>
     </div>
   );
 };
